@@ -4,7 +4,8 @@
   "description": "generative art via javascript",
   "main": "index.js",
   "scripts": {
-    "test": "tape"
+    "test": "tape",
+    "canvas": "canvas-sketch"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/HaQadosch/FrontEndMasters_CreativeCodingGenerativeArt#readme",
   "dependencies": {
+    "canvas-sketch": "^0.7.1",
     "canvas-sketch-cli": "^1.11.7",
     "npm": "^6.13.0",
     "three": "^0.110.0"
