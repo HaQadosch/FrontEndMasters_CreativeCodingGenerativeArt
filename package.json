@@ -1,0 +1,28 @@
+{
+  "name": "frontendmasters_creativecodinggenerativeart",
+  "version": "1.0.0",
+  "description": "generative art via javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaQadosch/FrontEndMasters_CreativeCodingGenerativeArt.git"
+  },
+  "keywords": [
+    "javascript",
+    "art"
+  ],
+  "author": "HaQadosch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaQadosch/FrontEndMasters_CreativeCodingGenerativeArt/issues"
+  },
+  "homepage": "https://github.com/HaQadosch/FrontEndMasters_CreativeCodingGenerativeArt#readme",
+  "dependencies": {
+    "canvas-sketch-cli": "^1.11.7",
+    "npm": "^6.13.0",
+    "three": "^0.110.0"
+  }
+}
