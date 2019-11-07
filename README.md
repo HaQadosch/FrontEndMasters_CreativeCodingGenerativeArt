@@ -131,3 +131,18 @@ const settings = {
 ```
 
 It might be easier to first work in a big square format, all in pixels units and then migrate to a setting fitting the export you want when you are done with your artwork.
+
+## The Grid
+
+The grid is like a theme used as a scaffold to start placing together the different elements of your art.
+
+1. It can be a grid of the same element repeated (unicodes, shapes)
+2. and then add some randomness in the size/position/orientation
+3. and then some random colors, pallettes
+4. increase the number of row/cols
+5. add some animation?
+
+A function based randomness like Gaussian is more interresting than the pure `Math.random`. We can have some nice distribution and apply some noise as well to make all this randomisation more artsy.
+
+The workflow is to start very simple and then get more complex by iterations, following our inspiration/curiosity.
+
