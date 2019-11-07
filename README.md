@@ -38,4 +38,7 @@ To create a JavaScript file frow a sketch template:
   - `--new` will create the js file with the canvas-sketch template.
   - `--open` will open a browser.
 
+## Canvas Sketch Introduction
 
+  * [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) doc, keep as a reference.
+  * 
