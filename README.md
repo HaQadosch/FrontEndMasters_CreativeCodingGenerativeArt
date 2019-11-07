@@ -41,4 +41,30 @@ To create a JavaScript file frow a sketch template:
 ## Canvas Sketch Introduction
 
   * [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) doc, keep as a reference.
-  * 
+
+## Canvas API Basics
+
+Drawing a circle via [CanvasRenderingContext2D.arc()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc)
+
+`context` is the elt where all the drawings will be applied
+```js
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+```
+
+
+### Rendering a path
+
+  * `fill()`, fills the shape.
+  * `stroke()` highlights the shape. 
+  * All parameters must be set before we call the functions.
+
+
+```js
+context.fillStyle = 'purple'
+context.arc(width / 2, height / 2, 200, 0, 2 * Math.PI, false)
+context.fill()
+```
+
+Basic functions are covered in the [cheatsheet](https://github.com/mattdesl/workshop-generative-art/blob/master/docs/cheat-sheet.md).
+
