@@ -2,6 +2,10 @@ import canvasSketch from 'canvas-sketch'
 
 const settings = {
   dimensions: [ 2048, 2048 ]
+  // untis: 'cm',
+  // dimensions: 'A4',
+  // orientation: 'landscape',
+  // pixelsPerInch: 300
 }
 
 const sketch = () => {
@@ -12,13 +16,12 @@ const sketch = () => {
     // Rendering a circle is rendering a path.
     context.beginPath()
     context.fillStyle = 'purple'
-    context.arc(width / 2, height / 2, 300, 0, 2 * Math.PI, false)
+    context.arc(width / 2, height / 2, width * 0.2, 0, 2 * Math.PI, false)
     context.fill()
 
-    context.lineWidth = 40
+    context.lineWidth = width * 0.05
     context.strokeStyle = 'green'
     context.stroke()
-    context.endPath()
   }
 }
 
