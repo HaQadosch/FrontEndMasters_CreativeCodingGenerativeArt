@@ -190,5 +190,36 @@ random.setSeed(uid) // uid: Number | String
 random.value()
 ```
 
+The uid could be the actual date, and you generate the _art of the day_ following the series of random number based on the uid for today.
+
 You can then share the seed (the uid) to make sure the same art is generated using the same series of random values.
+
+# Radius & Organic Randomness
+
+## Workflow
+
+1. Customize the setting: dimensions, margin, background, ...
+2. Generate the data structure, grid size, circle radius, ...
+3. Display the structure into the canvas
+
+We want to play with the radius for each circle.
+So now each circle need to handle:
+  * it's u,v position
+  * it's radius size
+
+Setting the randow size of the circle with the width allow to get pretty mutch the same art even when you change the resolution.
+```js
+random = random.value() * 0.01
+radius = random * width
+```
+
+`random.value()` is using a uniform distribution and the art keeps its grid structure very apparent.
+`random.gaussian()` can genarate a more organic feel to the art.
+
+Keep in mind that  `-3.5 < gaussian() < 3.5` and generating negative numbers can be a pbm when you're dealing with size for example.
+
+You can:
+  * `Math.abs(random.gaussian())`
+  * `Math.max(0, random.gaussian())`
+  * `0.01 + (random.gaussian() * 0.01)`
 
