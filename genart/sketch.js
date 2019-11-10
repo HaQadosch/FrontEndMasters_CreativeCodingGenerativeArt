@@ -9,7 +9,7 @@ const settings = {
 
 const sketch = () => {
   // Local state functions.
-  const randomMax = random.rangeFloor(1, palettes[0].length + 1)
+  const randomMax = random.rangeFloor(2, palettes[0].length + 1)
   const palette = random.shuffle(random.pick(palettes)).slice(0, randomMax)
 
   const createGrid = () => {
@@ -21,17 +21,18 @@ const sketch = () => {
         // Normalize?
         const u = count <= 1 ? 0.5 : x / (count - 1)
         const v = count <= 1 ? 0.5 : y / (count - 1)
+        const radius = (0.5 + 0.5 * random.noise2D(u, v)) * 0.015
         points.push({
           color: random.pick(palette),
           position: [ u, v ],
-          radius: Math.max(0, random.gaussian()) * 0.01
+          radius
         })
       }
     }
     return points
   }
 
-  random.setSeed(10112019)
+  // random.setSeed(10112019)
   const points = createGrid().filter(() => random.value() > 0.5)
   const margin = 400
 
