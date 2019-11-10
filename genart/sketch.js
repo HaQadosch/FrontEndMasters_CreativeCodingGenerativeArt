@@ -49,11 +49,6 @@ const sketch = () => {
       const x = lerp(margin, width - margin, u)
       const y = lerp(margin, height - margin, v)
 
-      // context.beginPath()
-      // context.arc(x, y, radius * width, 0, Math.PI * 2, false)
-      // context.fillStyle = color
-      // context.fill()
-
       context.save()
       context.fillStyle = color
       context.font = `${radius * width}px "Fira Code"`
