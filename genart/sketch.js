@@ -1,11 +1,8 @@
 import canvasSketch from 'canvas-sketch'
+import { lerp } from 'canvas-sketch-util/math'
 
 const settings = {
   dimensions: [ 2048, 2048 ]
-  // untis: 'cm',
-  // dimensions: 'A4',
-  // orientation: 'landscape',
-  // pixelsPerInch: 300
 }
 
 const sketch = () => {
@@ -26,6 +23,8 @@ const sketch = () => {
   }
 
   const points = createGrid()
+  const margin = 400
+
   // Render function.
   return ({ context, width, height }) => {
     context.fillStyle = 'white'
@@ -33,8 +32,8 @@ const sketch = () => {
 
     points.forEach(([ u, v ]) => {
       // Project back to the 2048 pixels dimension.
-      const x = u * width
-      const y = v * height
+      const x = lerp(margin, width - margin, u)
+      const y = lerp(margin, height - margin, v)
 
       context.beginPath()
       context.arc(x, y, 100, 0, Math.PI * 2, false)

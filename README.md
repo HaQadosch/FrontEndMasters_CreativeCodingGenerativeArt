@@ -146,3 +146,29 @@ A function based randomness like Gaussian is more interresting than the pure `Ma
 
 The workflow is to start very simple and then get more complex by iterations, following our inspiration/curiosity.
 
+# Drawing the Grid
+
+We can normalize the coordinates space by the number of elts in a row/column/whathaveyou:
+  * from (x, y) 0 -> 2048 
+  * to (u, v) 0 -> 1
+  * u = x / nbrOfElts
+  * v = y * height
+
+Linear interpolation can become handy in this kind of scenario.
+
+# Linear interpolation
+
+We want to have some margin space and give the genart some breathing room.
+
+  * We'll be using the [util](https://github.com/mattdesl/canvas-sketch-util/) library.
+  * In the [math](https://github.com/mattdesl/canvas-sketch-util/blob/master/docs/math.md) module, 
+  * let's use the linear interpolation [lerp](https://github.com/mattdesl/canvas-sketch-util/blob/master/docs/math.md#lerp) function
+
+```js
+  points.forEach(([ u, v ]) => {
+    const x = lerp(min, max, x)
+    // min & max: margin space
+    // x: cardinal postion, current elt is the Xth elt 
+  })
+```
+
