@@ -1,5 +1,6 @@
 import canvasSketch from 'canvas-sketch'
 import { lerp } from 'canvas-sketch-util/math'
+import random from 'canvas-sketch-util/random'
 
 const settings = {
   dimensions: [ 2048, 2048 ]
@@ -9,7 +10,7 @@ const sketch = () => {
   // Local state functions.
   const createGrid = () => {
     const points = []
-    const count = 5 // Grid size, meaning 5x5.
+    const count = 40 // Grid size, meaning 5x5.
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
         // sets the space (width & height) between 0 and 1.
@@ -22,7 +23,7 @@ const sketch = () => {
     return points
   }
 
-  const points = createGrid()
+  const points = createGrid().filter(() => random.value() > 0.5)
   const margin = 400
 
   // Render function.
@@ -36,9 +37,9 @@ const sketch = () => {
       const y = lerp(margin, height - margin, v)
 
       context.beginPath()
-      context.arc(x, y, 100, 0, Math.PI * 2, false)
+      context.arc(x, y, 10, 0, Math.PI * 2, false)
       context.strokeStyle = 'black'
-      context.lineWidth = 40
+      context.lineWidth = 5
       context.stroke()
     })
   }

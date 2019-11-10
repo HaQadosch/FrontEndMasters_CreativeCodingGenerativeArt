@@ -172,3 +172,23 @@ We want to have some margin space and give the genart some breathing room.
   })
 ```
 
+# Adding Randomness
+
+To add more interesting artifact, you can include some randomness.
+Like working with more circles (1600) and randomly remove some of them.
+
+`Math.random` has some feature that you might not want:
+  * 0 < `Math.random` < 1, you might want bigger spread.
+  * Too random, you might want some control over that randomness.
+
+The [random](https://github.com/mattdesl/canvas-sketch-util/blob/master/docs/random.md) utility library has some useful pseudo random functions.
+
+## Fix randomness
+`.setSeed()` sets the randomness so that `.value()` will always generate the same series.
+```js
+random.setSeed(uid) // uid: Number | String
+random.value()
+```
+
+You can then share the seed (the uid) to make sure the same art is generated using the same series of random values.
+
