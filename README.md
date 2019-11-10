@@ -223,3 +223,30 @@ You can:
   * `Math.max(0, random.gaussian())`
   * `0.01 + (random.gaussian() * 0.01)`
 
+# Color Palette
+
+We use `palettes` from `nice-color-palettes`
+It's an array of palette, each palette with 5 color hexes.
+
+Now, each of our circles will also handle it's filler color.
+
+`random.pick(elts)` selects a elt at random from the elts given.
+
+```js
+import palettes from 'nice-color-palettes'
+const palette = random.pick(palettes)
+const color = random.pick(palette)
+```
+
+5 colors per palette might be a bit too much, so you can slice the array of hexes to restrain the choice of colors (or destructure the palette).
+
+```js
+const [c1, c2, c3, c4, c5] = random.pick(palettes)
+const color = random.pick([c2, c3, c4])
+```
+
+Or you can also randomise the number of colors used in the palette.
+`random.floor(inclusiveMin, exclusiveMax)`
+
+And after that, you can also shuffle the palette before slicing it, because the last color would be very seldomly be selected.
+
