@@ -11,7 +11,7 @@ const sketch = () => {
   // Local state functions.
   const randomMax = random.rangeFloor(1, palettes[0].length + 1)
   const palette = random.shuffle(random.pick(palettes)).slice(0, randomMax)
-  
+
   const createGrid = () => {
     const points = []
     const count = 40 // Grid size, meaning 5x5.

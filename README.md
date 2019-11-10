@@ -250,3 +250,29 @@ Or you can also randomise the number of colors used in the palette.
 
 And after that, you can also shuffle the palette before slicing it, because the last color would be very seldomly be selected.
 
+# Noise
+
+`noise` gives a random number based on the coordinates of the elt.
+The same coordinates return the same value between -1 and 1.
+Each neighbour elt has a value close to the elt, so you end up with wavy generated art
+
+```js
+// values in the -1 .. 1 range
+const v = noise2D(x, y)
+
+// map to 0..1 range
+const n = v * 0.5 + 0.5
+
+// turn into a percentage
+const L = Math.floor(n * 100)
+
+// get color value
+const hsl = `hsl(0, 0%, ${L}%)`
+```
+
+You can apply a frequency to the noise signal. You zoom ou, zoom in into the picture.
+```js
+const frequency = 5.0
+const v = noise(x * frequency, y * frequency)
+```
+
