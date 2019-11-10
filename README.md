@@ -276,3 +276,27 @@ const frequency = 5.0
 const v = noise(x * frequency, y * frequency)
 ```
 
+# Drawing with Text Characters
+
+```js
+context.fillStyle = color
+context.font = '100px "Fira Code"'
+context.fillText('A', x, y)
+```
+
+## Rotation
+
+Canvas is state based, which means everytime you apply a rotation, the canvas will keep that rotation in place. If you apply a rotation again, it will add up to the previous state of the rotation.
+
+You can cancel the rotation by applying the opposite rotation every time you're finished with an elt.
+Or you can save the states of the transformations, apply all transformations for every elt and then restore the states.
+
+```js
+context.save()
+// transformation of the elt, or all the elts.
+context.restore()
+```
+
+All the rotations are centered in the top left point.
+To rotate at point of elt, we can `translate` the canvas to the coordinates of the elt, apply the transformations at the origin `rotate(); fillText('', 0, 0)` and then `restore`.
+

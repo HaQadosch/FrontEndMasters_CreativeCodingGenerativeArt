@@ -21,11 +21,14 @@ const sketch = () => {
         // Normalize?
         const u = count <= 1 ? 0.5 : x / (count - 1)
         const v = count <= 1 ? 0.5 : y / (count - 1)
-        const radius = (0.5 + 0.5 * random.noise2D(u, v)) * 0.015
+        const radius = (0.5 + 0.5 * random.noise2D(u, v)) * 0.07
+        const rotation = random.noise2D(u, v)
+
         points.push({
           color: random.pick(palette),
           position: [ u, v ],
-          radius
+          radius,
+          rotation
         })
       }
     }
@@ -41,15 +44,23 @@ const sketch = () => {
     context.fillStyle = 'white'
     context.fillRect(0, 0, width, height)
 
-    points.forEach(({ position: [ u, v ], radius, color }) => {
+    points.forEach(({ position: [ u, v ], radius, color, rotation }) => {
       // Project back to the 2048 pixels dimension.
       const x = lerp(margin, width - margin, u)
       const y = lerp(margin, height - margin, v)
 
-      context.beginPath()
-      context.arc(x, y, radius * width, 0, Math.PI * 2, false)
+      // context.beginPath()
+      // context.arc(x, y, radius * width, 0, Math.PI * 2, false)
+      // context.fillStyle = color
+      // context.fill()
+
+      context.save()
       context.fillStyle = color
-      context.fill()
+      context.font = `${radius * width}px "Fira Code"`
+      context.translate(x, y)
+      context.rotate(rotation)
+      context.fillText('==', 0, 0)
+      context.restore()
     })
   }
 }
