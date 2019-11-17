@@ -7,11 +7,16 @@ require('three/examples/js/controls/OrbitControls')
 const canvasSketch = require('canvas-sketch')
 const random = require('canvas-sketch-util/random')
 
+const eases = require('eases')
+const BezierEasing = require('bezier-easing')
+
 const palettes = require('nice-color-palettes')
 const palette = random.pick(palettes)
 
 const settings = {
-  // Make the loop animated
+  dimensions: [521, 521],
+  fps: 24,
+  duration: 4,
   animate: true,
   // Get a WebGL canvas rather than 2D
   context: 'webgl',
@@ -61,6 +66,8 @@ const sketch = ({ context }) => {
   light.position.set(2, 2, 4)
   scene.add(light)
 
+  const easeFn = BezierEasing(0.17, 0.67, 0.83, 0.67)
+
   // draw each frame
   return {
     // Handle resize events here
@@ -85,7 +92,9 @@ const sketch = ({ context }) => {
       camera.updateProjectionMatrix()
     },
     // Update & render your scene here
-    render ({ time }) {
+    render ({ playhead }) {
+      const sin = Math.sin(playhead * Math.PI)
+      scene.rotation.y = easeFn(sin)
       renderer.render(scene, camera)
     },
     // Dispose of events & renderer for cleaner hot-reloading
