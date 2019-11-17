@@ -7,6 +7,9 @@ require('three/examples/js/controls/OrbitControls')
 const canvasSketch = require('canvas-sketch')
 const random = require('canvas-sketch-util/random')
 
+const palettes = require('nice-color-palettes')
+const palette = random.pick(palettes)
+
 const settings = {
   // Make the loop animated
   animate: true,
@@ -33,17 +36,30 @@ const sketch = ({ context }) => {
   const scene = new THREE.Scene()
 
   const geometry = new THREE.BoxGeometry(1, 1, 1)
-  const material = new THREE.MeshBasicMaterial({ color: 'red' })
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 40; i++) {
+    const material = new THREE.MeshStandardMaterial({
+      color: random.pick(palette)
+    })
     const mesh = new THREE.Mesh(geometry, material)
     mesh.position.set(
       random.range(-1, 1),
       random.range(-1, 1),
       random.range(-1, 1)
     )
-    mesh.scale.multiplyScalar(0.1)
+    mesh.scale.set(
+      random.range(-1, 1),
+      random.range(-1, 1),
+      random.range(-1, 1)
+    )
+    mesh.scale.multiplyScalar(0.3)
     scene.add(mesh)
   }
+
+  scene.add(new THREE.AmbientLight('hsl(0, 0%, 25%)'))
+
+  const light = new THREE.DirectionalLight('white', 1)
+  light.position.set(2, 2, 4)
+  scene.add(light)
 
   // draw each frame
   return {
