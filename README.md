@@ -309,4 +309,10 @@ To rotate at point of elt, we can `translate` the canvas to the coordinates of t
   * Mesh (copy of an instance)
   * Scene
   * Camera
-  * 
+
+## Coding a isometric cube
+
+```sh
+> npm run canvas genart/webgl.js -- --new --template=three
+```
+
