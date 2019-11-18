@@ -24,7 +24,7 @@ const frag = glsl/* glsl */`
     center.x *= aspectRatio;
     float dist = length(center);
 
-    vec3 color = mix(colorA, colorB, vUv.x);
+    vec3 color = mix(colorA, colorB, vUv.x + vUv.y * sin(time));
     float alpha = smoothstep(0.2555, 0.25, dist);
     gl_FragColor = vec4(color, alpha);
   }
