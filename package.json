@@ -28,7 +28,7 @@
     "canvas-sketch-util": "^1.10.0",
     "eases": "^1.0.8",
     "nice-color-palettes": "^3.0.0",
-    "npm": "^6.13.0",
+    "npm": "^6.14.6",
     "three": "^0.110.0"
   }
 }
